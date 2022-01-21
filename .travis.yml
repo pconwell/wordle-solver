@@ -1,8 +1,0 @@
-os: linux
-dist: buster
-language: python
-
-services: docker
-
-script:
-   - docker build -t wordle .
