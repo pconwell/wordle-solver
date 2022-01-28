@@ -7,8 +7,8 @@ import random
 # if a character is not in the puzzle = 0
 # if a character is in the puzzle but in the wrong spot = 1
 # if a character is in the puzzle and in the right spot = 2
-rows = {0: [("",0),("",0),("",0),("",0),("",0)],
-        1: [("",0),("",0),("",0),("",0),("",0)],
+rows = {0: [("T",1),("R",0),("A",0),("I",0),("N",1)],
+        1: [("N",1),("O",2),("T",1),("E",0),("D",0)],
         2: [("",0),("",0),("",0),("",0),("",0)],
         3: [("",0),("",0),("",0),("",0),("",0)],
         4: [("",0),("",0),("",0),("",0),("",0)],
