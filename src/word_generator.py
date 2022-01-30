@@ -83,8 +83,8 @@ if __name__ == "__main__":
    # if a character is not in the puzzle = 0
    # if a character is in the puzzle but in the wrong spot = 1
    # if a character is in the puzzle and in the right spot = 2
-   rows = {0: [("",0),("",0),("",0),("",0),("",0)],
-           1: [("",0),("",0),("",0),("",0),("",0)],
+   rows = {0: [("R",0),("H",0),("Y",0),("M",0),("E",0)],
+           1: [("S",0),("L",1),("A",0),("I",0),("N",0)],
            2: [("",0),("",0),("",0),("",0),("",0)],
            3: [("",0),("",0),("",0),("",0),("",0)],
            4: [("",0),("",0),("",0),("",0),("",0)],

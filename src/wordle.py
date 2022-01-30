@@ -88,10 +88,14 @@ unpack_shadow_dom("game-app game-modal game-icon")[0].click()
 sleep(1)
 
 # go through each of the 6 rows/guesses
-for n, i in enumerate(range(6)):
+for n, i in enumerate(range(7)):
+   print(n)
    # if all of the letters are correct/green, we can stop the game
    if all(i[1] == 2 for i in word_object[0]):
       print(f"All letters are correct, the answer is: {[i[0] for i in word_object[0]]}")
+      break
+   if n == 6:
+      print("The word was not found in the first 6 guesses.")
       break
    else:
       word_object = word_guesser(word_object, n)
