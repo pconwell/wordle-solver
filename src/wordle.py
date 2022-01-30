@@ -56,18 +56,25 @@ def word_guesser(word_object, n):
 
    # check the letters to see if they are green, yellow, or grey
    # and add them to the word object as appropriate
+   temp_word_object = []
    tiles = unpack_shadow_dom(f'game-app game-row[letters="{rand_word[1]}"] game-tile')
-   for n, tile in enumerate(tiles):
+   for i, tile in enumerate(tiles):
       print(tile.text, tile.get_attribute("evaluation"))
       if tile.get_attribute("evaluation") == "absent":
          # if the letter is gray, == 0
-         word_object[0][n] = (tile.text, 0)
+         # word_object[n][i] = (tile.text, 0)
+         temp_word_object.append((tile.text, 0))
       elif tile.get_attribute("evaluation") == "present":
          # if the letter is yellow, == 1
-         word_object[0][n] = (tile.text, 1)
+         # word_object[n][i] = (tile.text, 1)
+         temp_word_object.append((tile.text, 1))
       elif tile.get_attribute("evaluation") == "correct":
          # if the letter is green, == 2
-         word_object[0][n] = (tile.text, 2)
+         # word_object[n][i] = (tile.text, 2)
+         temp_word_object.append((tile.text, 2))
+
+   # update the word object with the new row (the temp_word_object)
+   word_object[n] = temp_word_object
 
    return word_object
 
@@ -88,17 +95,18 @@ unpack_shadow_dom("game-app game-modal game-icon")[0].click()
 sleep(1)
 
 # go through each of the 6 rows/guesses
-for n, i in enumerate(range(7)):
-   print(n)
+for n, i in enumerate(range(6)):
+   # run a word guesser loop
+   word_object = word_guesser(word_object, n)
+
    # if all of the letters are correct/green, we can stop the game
-   if all(i[1] == 2 for i in word_object[0]):
-      print(f"All letters are correct, the answer is: {[i[0] for i in word_object[0]]}")
+   if all(i[1] == 2 for i in word_object[n]):
+      print(f"All letters are correct, the answer is: {[i[0] for i in word_object[n]]}")
       break
+   # if we got through 6 guesses and all letters are not correct, we can stop the game
    if n == 6:
       print("The word was not found in the first 6 guesses.")
       break
-   else:
-      word_object = word_guesser(word_object, n)
 
 driver.save_screenshot('WebsiteScreenShot.png')
 driver.close()
